@@ -94,9 +94,9 @@ void fillMatrix(vector< vector<int> >& matrix, const size_t N, const size_t M)
 void multiplyMatrices(const vector< vector<int> >& matrix1, const vector< vector<int> >& matrix2, \
                      vector< vector<int> >& resultMatrix, bool isParallel)
 {
-	startTime = clock();
-
 	int elemVal = 0;
+	
+	startTime = clock();
 	
 	#pragma omp parallel default(shared) firstprivate(elemVal) if(isParallel)
 	{
