@@ -10,7 +10,7 @@ size_t N = 0, M = 0;
 // Boundaries of values of matrix elements
 int leftBoard = -100, rightBoard = 100;
 // For time execution
-clock_t start = 0, end = 0;
+clock_t startTime = 0, endTime = 0;
 
 int getMaxOfMin(const vector< vector<int> >&, bool);
 
@@ -52,7 +52,7 @@ int main()
 	cout << endl << "Answer: " << maxElem;
 
 	// Output
-	cout << endl << "Execution time: " << (end*1.0 - start) / CLOCKS_PER_SEC;
+	cout << endl << "Execution time: " << (endTime*1.0 - startTime) / CLOCKS_PER_SEC;
 	cout << " sec." << endl;
 	
 	return 0;
@@ -63,7 +63,7 @@ int getMaxOfMin(const vector< vector<int> >& matrix, bool isParallel)
 	int maxElem = leftBoard;
 	int minElem = rightBoard;
 
-	start = clock();
+	startTime = clock();
 	
 	#pragma omp parallel shared(matrix, N, M) firstprivate(minElem) \
 	if(isParallel) 
@@ -78,7 +78,7 @@ int getMaxOfMin(const vector< vector<int> >& matrix, bool isParallel)
 		}
 	}
 	
-	end = clock();
+	endTime = clock();
 
 	return maxElem;
 }
