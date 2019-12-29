@@ -65,18 +65,16 @@ int getMaxOfMin(const vector< vector<int> >& matrix, bool isParallel)
 
 	startTime = clock();
 	
-	#pragma omp parallel shared(matrix, N, M) firstprivate(minElem) \
-	if(isParallel) 
+	#pragma omp parallel for shared(matrix, N, M) firstprivate(minElem) \
+	schedule(static) reduction(max: maxElem) if(isParallel) 
+	for (size_t i = 0; i < N; i++)
 	{
-		#pragma omp for schedule(static) reduction(max: maxElem)
-		for (size_t i = 0; i < N; i++)
-		{
-			minElem = rightBoard;
-			for (size_t j = 0; j < M; j++)
-				minElem = min(minElem, matrix[i][j]);
-			maxElem = max(maxElem, minElem);
-		}
+		minElem = rightBoard;
+		for (size_t j = 0; j < M; j++)
+			minElem = min(minElem, matrix[i][j]);
+		maxElem = max(maxElem, minElem);
 	}
+	
 	
 	endTime = clock();
 
