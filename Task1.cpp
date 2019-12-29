@@ -18,7 +18,7 @@ int main()
 {	
 	bool isParallel = false;
 	
-	cout << "Enter the number of lines:" << endl;
+	cout << "Enter the number of rows:" << endl;
 	cin >> N;
 	cout << "Enter the number of columns:" << endl;
 	cin >> M;
