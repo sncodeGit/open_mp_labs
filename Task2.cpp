@@ -98,18 +98,16 @@ void multiplyMatrices(const vector< vector<int> >& matrix1, const vector< vector
 	
 	startTime = clock();
 	
-	#pragma omp parallel default(shared) firstprivate(elemVal) if(isParallel)
-	{
-		#pragma omp for schedule(static)
-		for (size_t i = 0; i < N1; i++)
-			for (size_t j = 0; j < M2; j++)
-			{
-				elemVal = 0;
-				for (size_t k = 0; k < N2; k++)
-					elemVal += matrix1[i][k] * matrix2[k][j];
-				resultMatrix[i][j] = elemVal;
-			}
-	}
+	#pragma omp parallel for schedule(static) \
+	default(shared) firstprivate(elemVal) if(isParallel)
+	for (size_t i = 0; i < N1; i++)
+		for (size_t j = 0; j < M2; j++)
+		{
+			elemVal = 0;
+			for (size_t k = 0; k < N2; k++)
+				elemVal += matrix1[i][k] * matrix2[k][j];
+			resultMatrix[i][j] = elemVal;
+		}
 	
 	endTime = clock();
 
