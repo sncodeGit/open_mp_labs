@@ -10,7 +10,7 @@ size_t N1 = 0, M1 = 0, N2 = 0, M2 = 0;
 // Boundaries of values of matrix elements
 int leftBoard = -10, rightBoard = 10;
 // For time execution
-clock_t start = 0, end = 0;
+clock_t startTime = 0, endTime = 0;
 
 void multiplyMatrices(const vector< vector<int> >&, const vector< vector<int> >&, \
                      vector< vector<int> >&, bool);
@@ -64,7 +64,7 @@ int main()
 	}
 
 	// Output
-	cout << endl << "Execution time: " << (end*1.0 - start) / CLOCKS_PER_SEC;
+	cout << endl << "Execution time: " << (endTime*1.0 - startTime) / CLOCKS_PER_SEC;
 	cout << " sec." << endl;
 	
 	return 0;
@@ -94,7 +94,7 @@ void fillMatrix(vector< vector<int> >& matrix, const size_t N, const size_t M)
 void multiplyMatrices(const vector< vector<int> >& matrix1, const vector< vector<int> >& matrix2, \
                      vector< vector<int> >& resultMatrix, bool isParallel)
 {
-	start = clock();
+	startTime = clock();
 
 	int elemVal = 0;
 	
@@ -111,7 +111,7 @@ void multiplyMatrices(const vector< vector<int> >& matrix1, const vector< vector
 			}
 	}
 	
-	end = clock();
+	endTime = clock();
 
 	return;
 }
