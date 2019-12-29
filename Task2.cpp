@@ -100,7 +100,7 @@ void multiplyMatrices(const vector< vector<int> >& matrix1, const vector< vector
 	
 	#pragma omp parallel default(shared) firstprivate(elemVal) if(isParallel)
 	{
-		#pragma omp for schedule(guided)
+		#pragma omp for schedule(static)
 		for (size_t i = 0; i < N1; i++)
 			for (size_t j = 0; j < M2; j++)
 			{
