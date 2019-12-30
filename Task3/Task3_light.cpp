@@ -23,10 +23,14 @@ void dispResult(const vector<int>&);
 int main()
 {
 	bool isParallel = false;
+	int threadsNum = 0;
 
 	cin >> N;
 	cin >> M;
 	cin >> isParallel;
+	
+	cin >> threadsNum;
+	omp_set_num_threads(threadsNum);
 
 	vector< vector<int> > matrix;
 	vector<int> vec(M), resVec(N);
