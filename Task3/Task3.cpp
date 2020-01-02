@@ -81,7 +81,7 @@ int main()
 void rowsMultiply(const vector< vector<int> >& matrix, const vector<int>& vec, \
                      vector<int>& resVec, bool isParallel)
 {
-	size_t elemVal = 0;
+	int elemVal = 0;
 
 	startTime = clock();
 	
@@ -112,7 +112,7 @@ void columnsMultiply(const vector< vector<int> >& matrix, const vector<int>& vec
 
 	// Second variant
 
-	size_t elemVal = 0;
+	int elemVal = 0;
 
 	startTime = clock();
 	
