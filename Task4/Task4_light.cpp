@@ -34,6 +34,8 @@ int main()
 	cin >> M2;
 //	cout << "Enter parallel or not (0 - false, other - true):" << endl;
 	cin >> isParallel;
+	cin >> threadsNum;
+	omp_set_num_threads(threadsNum);
 
 	vector< vector<int> > matrix1, matrix2, resultMatrix;
 	srand(time(NULL));
