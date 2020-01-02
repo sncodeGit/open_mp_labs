@@ -81,7 +81,7 @@ int main()
 void rowsMultiply(const vector< vector<int> >& matrix, const vector<int>& vec, \
                      vector<int>& resVec, bool isParallel)
 {
-	int elemVal = 0;
+	size_t elemVal = 0;
 
 	startTime = clock();
 	
@@ -112,7 +112,7 @@ void columnsMultiply(const vector< vector<int> >& matrix, const vector<int>& vec
 
 	// Second variant
 
-	int elemVal = 0;
+	size_t elemVal = 0;
 
 	startTime = clock();
 	
@@ -134,17 +134,17 @@ void blocksMultiply(const vector< vector<int> >& matrix, const vector<int>& vec,
 	
 	#pragma omp parallel shared(matrix, vec, resVec) if(isParallel)
 	{
-		int threadsNum = omp_get_num_threads();
-		int height = N / threadsNum;
-		int width = M / threadsNum;
+		size_t threadsNum = omp_get_num_threads();
+		size_t height = N / threadsNum;
+		size_t width = M / threadsNum;
 
 		#pragma omp for
-		for (int blockNum = 0; blockNum < threadsNum * threadsNum; blockNum++)
+		for (size_t blockNum = 0; blockNum < threadsNum * threadsNum; blockNum++)
 		{
-			int a = blockNum / threadsNum;
-			int b = blockNum % threadsNum;
-			for (int i = a * height; i < (a + 1) * height; i++)
-				for (int j = b * width; j < (b + 1) * width; j++)
+			size_t a = blockNum / threadsNum;
+			size_t b = blockNum % threadsNum;
+			for (size_t i = a * height; i < (a + 1) * height; i++)
+				for (size_t j = b * width; j < (b + 1) * width; j++)
 					resVec[i] += matrix[i][j] * vec[j];
 		}
 	}
