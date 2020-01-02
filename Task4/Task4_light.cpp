@@ -23,6 +23,7 @@ void printResult(const vector< vector<int> >&);
 int main()
 {	
 	bool isParallel = false;
+	size_t threadsNum = 1;
 	
 //	cout << "Enter the number of rows in first matrix:" << endl;
 	cin >> N1;
